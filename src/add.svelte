@@ -3,6 +3,8 @@
   import { Button } from "$lib/components/ui/button";
   import { Input } from "$lib/components/ui/input";
   import { Label } from "$lib/components/ui/label";
+  let name = "John Doe";
+  let email = "Johndoe@gmail.com"; 
 </script>
 
 <Card.Root class="w-[350px] m-5">
@@ -11,18 +13,18 @@
     <Card.Description>Add new users in DB</Card.Description>
   </Card.Header>
   <Card.Content>
-    <form>
+    <form method="post" action="/adduser">
       <div class="grid w-full items-center gap-4">
         <div class="flex flex-col space-y-1.5">
           <Label for="name">Name</Label>
-          <Input id="name" placeholder="Name" />
+          <Input id="name" placeholder="Name" name="name" bind:value={name}/>
         </div>
         <div class="flex flex-col space-y-1.5">
           <Label for="email">Email</Label>
-          <Input id="email" placeholder="email" />
+          <Input id="email" placeholder="email" name="email" bind:value={email}/>
         </div>
       </div>
-      <Button class="mt-5 py-0 px-3">Save User</Button>
+      <Button class="mt-5 py-0 px-3" type="submit">Save User</Button>
     </form>
   </Card.Content>
 </Card.Root>
