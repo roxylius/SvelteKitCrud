@@ -5,6 +5,23 @@
   import { Label } from "$lib/components/ui/label";
   let name = "John Doe";
   let email = "Johndoe@gmail.com"; 
+
+  const addUser = async (e) => {
+    e.preventDefault();
+    const response = await fetch('/adduser',{
+      method:"POST",
+      headers:{
+        "Content-type":"application/json"
+      },
+      body:JSON.stringify({name,email})
+    });
+
+    if(response.ok) {
+      console.log("successfully added user to database");
+      window.location.reload();
+    }
+    else console.log("unable to add user to db");
+  }
 </script>
 
 <Card.Root class="w-[350px] m-5">
@@ -13,7 +30,7 @@
     <Card.Description>Add new users in DB</Card.Description>
   </Card.Header>
   <Card.Content>
-    <form method="post" action="/adduser">
+    <form on:submit={(e) => addUser(e)}>
       <div class="grid w-full items-center gap-4">
         <div class="flex flex-col space-y-1.5">
           <Label for="name">Name</Label>

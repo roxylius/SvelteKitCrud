@@ -7,9 +7,11 @@ export const POST: RequestHandler = async ({ request }) => {
     connectionString: process.env.POSTGRES_URL
   });
   await client.connect();
-  const formData = await request.formData();
-  const name = formData.get('name');
-  const email = formData.get('email');
+
+  const body = await request.json();
+
+  const name = await body.name;
+  const email = await  body.email;
 
   if (typeof name !== 'string' || typeof email !== 'string') {
     return new Response('Invalid form data', { status: 400 });
