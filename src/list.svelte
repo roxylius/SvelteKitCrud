@@ -54,8 +54,8 @@
       }),
     });
 
-    if (!res.ok) console.log("successfully edited the user in db");
-    else console.log("unable to edit the user in DB.");
+    if (res.ok) console.log("successfully deleted user from db");
+    else console.log("unable to delete user in DB.");
   };
 
   const editDetails = async (e: any) => {
@@ -96,8 +96,8 @@
     })
 
     //if the reponse is correct
-    if (response.ok) console.log("successfully deleted");
-    else console.log("unable to delete the user from DB.");
+    if (response.ok) console.log("successfully edited data in DB");
+    else console.log("unable to edit user in DB.");
 
   }
 </script>

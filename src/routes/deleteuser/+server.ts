@@ -9,6 +9,7 @@ export const POST: RequestHandler = async ({ request }) => {
   await client.connect();
   const data = await request.json();
   const name = data.name;
+  console.log("name",name);
 
   if (typeof name !== 'string') {
     return new Response('Invalid form data', { status: 400 });
