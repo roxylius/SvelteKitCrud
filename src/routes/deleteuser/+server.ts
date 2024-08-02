@@ -15,7 +15,7 @@ export const POST: RequestHandler = async ({ request }) => {
   }
 
   try {
-    await client.sql`DELETE FROM table_name WHERE name=${name};`;
+    await client.sql`DELETE FROM users WHERE name=${name};`;
     return new Response('User delete successfully', { status: 200 });
   } catch (error) {
     console.error('Database error:', error);
