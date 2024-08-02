@@ -7,8 +7,8 @@ export const POST: RequestHandler = async ({ request }) => {
     connectionString: process.env.POSTGRES_URL
   });
   await client.connect();
-  const formData = await request.formData();
-  const name = formData.get('name');
+  const data = await request.json();
+  const name = data.name;
 
   if (typeof name !== 'string') {
     return new Response('Invalid form data', { status: 400 });
